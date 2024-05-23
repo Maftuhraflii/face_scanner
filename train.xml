@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<opencv_storage>
+<haarcascade_frontalface_default type_id="opencv-haar-classifier">
+  <size>20 20</size>
+  <stages>
+    <!-- Stage 0 -->
+    <_>
+      <trees>
+        <!-- Tree 0 -->
+        <_>
+          <features>
+            <!-- Feature 0 -->
+            <rects>
+              <_>3 7 14 8 -1.</_>
+              <_>3 9 14 4 2.</_></rects>
+            <tilted>0</tilted></features></_></trees>
+      <stages>
+        <_>0.000000e+00 1.000000e+00 1.000000e+00</_></stages></haarcascade_frontalface_default>
+</opencv_storage>

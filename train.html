@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Recognition</title>
+</head>
+<body>
+    <h1>Face Recognition</h1>
+    <input type="file" id="fileInput">
+    <button onclick="detectFaces()">Detect Faces</button>
+    <div id="output"></div>
+
+    <script>
+        function detectFaces() {
+            var input = document.getElementById('fileInput');
+            var file = input.files[0];
+
+            var formData = new FormData();
+            formData.append('file', file);
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/detect_faces', true);
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    displayFaces(response);
+                }
+            };
+            xhr.send(formData);
+        }
+
+        function displayFaces(faces) {
+            var outputDiv = document.getElementById('output');
+            outputDiv.innerHTML = '';
+
+            if (faces.length === 0) {
+                outputDiv.innerHTML = 'No faces detected.';
+            } else {
+                outputDiv.innerHTML = 'Detected Faces: <br>';
+                faces.forEach(function (face, index) {
+                    outputDiv.innerHTML += `Face ${index + 1}: [x: ${face[0]}, y: ${face[1]}, w: ${face[2]}, h: ${face[3]}] <br>`;
+                });
+            }
+        }
+    </script>
+</body>
+</html>
